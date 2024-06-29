@@ -7,7 +7,7 @@
     <title>The British College</title>
     <!--css-->
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/gallery.css">
     <!--fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -52,92 +52,51 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
-    <div class="hero">
-        <div class="overlay">
-            <div class="narration">
-                <div class="title">
-                    <h1>Welcome to The British College</h1>
-                    <h2>Get a unique experience</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <a href="#">
-                        <h1>Students</h1>
-                        <h3>Details</h3>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <h1>Teachers</h1>
-                        <h3>Details</h3>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="#">
-                        <h1>Staffs</h1>
-                        <h3>Details</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="first-container">
-        <div class="container homepage-content">
-            <div class="row">
-                <div class="col" id="content-col">
-                    <h2 id="heading"></h2>
-                    <h3 id="heading1"></h3>
-                    <p id="paragraph"></p>
-                    <div class="button-row">
-                        <button id="prev-btn">Previous</button>
-                        <button id="next-btn">Next</button>
-                    </div>
-                </div>
-                <div class="col">
-                    <img id="image" src="" alt="Image" style="width: 100%;">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="second-container">
+    <main class="gallery">
         <div class="container">
-            <div class="row">
-                <div class="title">
-                    <h2>Our Team</h2>
-                    <h3>Our Awesome Team</h3>
-                    <div class="row">
-                        <span></span>
-                        <i class="fa-solid fa-star"></i>
-                        <span></span>
-                    </div>
-                </div>
+            <h1>Gallery</h1>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="programs">Programs</button>
+                <button class="filter-btn" data-filter="college">College</button>
+                <button class="filter-btn" data-filter="students">Students</button>
             </div>
-            <div class="content">
-                <div class="row staff-profile">
-                    <div class="col">
-                        <img src="profile1.jpg" alt="image">
-                        <h4>Executive Director</h4>
-                        <p>Mahendra Raj Kandel </p>
-                    </div>
-                    <div class="col">
-                        <img src="profile2.jpg" alt="image">
-                        <h4>CEO</h4>
-                        <p>Rajen Kandel </p>
-                    </div>
-                    <div class="col">
-                        <img src="profile3.jpg" alt="image">
-                        <h4>Deputy Principal</h4>
-                        <p>Dr. Patrick McCrudden</p>
-                    </div>
+            <div class="gallery-items">
+                <div class="gallery-item" data-category="programs">
+                    <img src="./images/image1.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="programs">
+                    <img src="./images/image2.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="college">
+                    <img src="./images/image3.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="college">
+                    <img src="./images/collete-1.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="college">
+                    <img src="./images/college-2.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="college">
+                    <img src="./images/college-3.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="students">
+                    <img src="./images/image4.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="students">
+                    <img src="./images/student-1.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="students">
+                    <img src="./images/student-2.jpg" alt="image">
+                </div>
+                <div class="gallery-item" data-category="students">
+                    <img src="./images/student-3.jpg" alt="image">
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="container">
@@ -167,9 +126,29 @@
             </div>
         </div>
     </footer>
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
 
-    <script src="./js/script.js"></script>
+                filterBtns.forEach(button => button.classList.remove('active'));
+                btn.classList.add('active');
+
+                galleryItems.forEach(item => {
+                    const category = item.dataset.category;
+
+                    if (filter === 'all' || filter === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
